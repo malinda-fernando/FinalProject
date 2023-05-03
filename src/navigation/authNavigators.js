@@ -25,7 +25,7 @@ export default function AuthStack() {
         component={WelcomeScreen}
         options={{
           headerShown: false,
-
+          ...TransitionPresets.RevealFromBottomAndroid,
         }}
       />
 

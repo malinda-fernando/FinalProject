@@ -10,9 +10,10 @@ const PropertyCard = ({ Trains, children, property, adults, selectedDate, availa
   return (
     <View>
       <Pressable onPress={() => navigation.navigate("Info", {
-        name: property.name, name: property.name,
+        name: property.name,
         distance: property.distance,
         ChildPrice: property.ChildPrice,
+        photos: property.photos,
         AdultPrice: property.AdultPrice,
         availableTrains: property.Trains,
         adults: adults,
