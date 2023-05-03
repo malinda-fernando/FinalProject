@@ -32,10 +32,10 @@ const PropertyInfoScreen = ({ }) => {
         <SafeAreaView>
 
             <ScrollView>
-                <Pressable style={{ flexDirection: "row", flexWrap: "wrap" }} >
+                <Pressable style={{ flexDirection:"row", flexWrap:"wrap", margin:10 }} >
                     {
                         route.params.photos?.slice(0, 5).map((photo) => (
-                            <View>
+                            <View style={{margin:6}}>
                                 <Image
                                     style={{
                                         width: 120,
@@ -47,6 +47,9 @@ const PropertyInfoScreen = ({ }) => {
                             </View>
                         ))
                     }
+                    <Pressable style={{alignItems:"center", justifyContent:"center"}}>
+                        <Text style ={{textAlign:"center", marginLeft:"20"}}>Show more </Text>
+                    </Pressable>
                 </Pressable>
                 <View>
                     <View>
