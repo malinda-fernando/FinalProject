@@ -94,8 +94,8 @@ const HomeScreen = ({ navigation }) => {
                 paddingLeft: 15,
               }}
             >
-              <Feather name="search" size={24} color="black" />
-              <TextInput
+              <Feather name="search" size={22} color="black" />
+              <TextInput 
                 placeholderTextColor="black"
                 placeholder={route?.params?.input ? route.params.input : "Enter your destination"}
               />
@@ -164,7 +164,7 @@ const HomeScreen = ({ navigation }) => {
               <TextInput
                 placeholderTextColor="black"
                 style={{ marginLeft: 10 }}
-                placeholder={`${adults}Adults - ${children}Children`}
+                placeholder={`${adults}Adults -  ${children} Children`}
               />
             </Pressable>
           </View>

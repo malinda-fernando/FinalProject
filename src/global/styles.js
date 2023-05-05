@@ -36,7 +36,8 @@ export const parameters = {
     alignItems: "center",
     justifyContent: "center",
     marginTop: -3
-  }
+  },
+  
 }
 
 export const title = {

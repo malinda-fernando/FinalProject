@@ -26,8 +26,8 @@ const PlacesScreen = () => {
                image: "https://live.staticflickr.com/1891/43561949645_67a068c1ef_b.jpg",
                distance: "Negambo to Colombo: 38.9 KM",
                address: "Negambo,Sri Lanka",
-               ChildPrice: "LKR 200 ",
-               AdultPrice: "LKR 300",
+               oldPrice:  200 ,
+               newPrice:  300,
                photos: [
                   {
                      id: "100",
@@ -75,29 +75,33 @@ const PlacesScreen = () => {
                   },
                   {
                      id: "109",
-                     image: "https://www.jetwinghotels.com/jetwingbeach/wp-content/uploads/sites/31/2017/12/exotic-bbq-cat-thumb.jpg",
-
+                     image:
+                        "2",
                   },
                ],
                Trains: [
                   {
                      id: "202",
-                     name: "Express train"
+                     name: "Express train",
+                     departureTime:"05.45 a.m",
+                     arrivalTime:"06.45 a.m"
+
 
 
                   },
                   {
                      id: "203",
-                     name: "Normal Train"
+                     name: "Normal Train",
+                     departureTime:"06.30 a.m",
+                     arrivalTime:"08.05 p.m"
                   },
                   {
                      id: "210",
-                     name: "Intercity Train"
+                     name: "Intercity Train",
+                     departureTime:"08.50a.m",
+                     arrivalTime:"10.15 p.m"
                   },
-                  {
-                     id: "209",
-                     name: "Luxury Train"
-                  },
+                 
 
                ],
             },
@@ -108,9 +112,8 @@ const PlacesScreen = () => {
                image: "https://fastly.4sqi.net/img/general/width960/22329506_dndPVK-mUgZhJUdKnKb8h3eXYA7IjDvQvDqzmGX_On8.jpg",
                distance: "Ella to Colombo: 306.5 KM",
                address: "Ella,Sri Lanka",
-               ChildPrice: "LKR 530 ",
-               AdultPrice: "LKR 830",
-               AdultPrice: "LKR 600",
+               oldPrice: 530, 
+               newPrice:  600,
                photos: [{
                   id: "130",
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBvQmgove_u14Q1XzJoDwvRkhWRun5JOfRQg&usqp=CAU",
@@ -166,18 +169,26 @@ const PlacesScreen = () => {
                   {
                      id: "105",
                      name: "Express Train",
+                     departureTime:"8.00 a.m",
+                     arrivalTime:"18.00 p.m"
                   },
                   {
                      id: "106",
                      name: "Local Train",
+                     departureTime:"9.40 a.m",
+                     arrivalTime:"21.15 p.m"
                   },
                   {
                      id: "107",
                      name: "Intercity Train",
+                     departureTime:"11.40 a.m",
+                     arrivalTime:"23.15 p.m"
                   },
                   {
                      id: "108",
                      name: "Luxury Train",
+                     departureTime:"5.40 a.m",
+                     arrivalTime:"14.15 p.m"
                   }
 
                ],
@@ -189,8 +200,8 @@ const PlacesScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1bVONcxD-V5TJ7ekzpegtpFs2YbuGxlwtgA&usqp=CAU",
                distance: "Galle to Colombo: 125.3 KM",
                address: "Galle,Sri Lanka",
-               ChildPrice: "LKR 400 ",
-               AdultPrice: "LKR 600",
+               oldPrice:  550 ,
+               newPrice:  900,
                photos: [{
                   id: "110",
                   image:
@@ -245,20 +256,22 @@ const PlacesScreen = () => {
                   {
                      id: "101",
                      name: "Express Train",
+                     departureTime:"9.30 a.m",
+                     arrivalTime:"12.55 a.m"
                   },
                   {
                      id: "102",
                      name: "Local Train",
+                     departureTime:"6.30 a.m",
+                     arrivalTime:"10.15 p.m"
                   },
                   {
                      id: "103",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "109",
-                     name: "Luxury Train",
+                     departureTime:"03.40 a.m",
+                     arrivalTime:"05.21 a.m"
                   }
-
+                 
                ],
 
             }
@@ -279,8 +292,8 @@ const PlacesScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1z2V1zWbzTptOiCLehWZJ4riAeUlZuMBRXEhhpELgEdlA6LefHSQwqFQStDkXbI7Uhfo&usqp=CAU",
                distance: "Colombo to Negambo: 37.4 KM",
                address: "Colombo,Sri Lanka",
-               ChildPrice: "LKR 260 ",
-               AdultPrice: "LKR 340",
+               oldPrice:  260 ,
+               newPrice:  340,
                photos: [
                   {
                      id: "140",
@@ -338,19 +351,22 @@ const PlacesScreen = () => {
                   {
                      id: "25",
                      name: "Express Train",
+                     departureTime:"9.30 a.m",
+                     arrivalTime:"12.55 p.m"
                   },
                   {
                      id: "26",
                      name: "Local Train",
+                     departureTime:"6.30 a.m",
+                     arrivalTime:"10.15 a.m"
                   },
                   {
                      id: "27",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "28",
-                     name: "Luxury Train",
+                     departureTime:"03.40 a.m",
+                     arrivalTime:"05.21 a.m"
                   }
+                  
 
                ],
 
@@ -361,8 +377,8 @@ const PlacesScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreN0L_goOHZHyvcjUSvbr3Nzcxg6TqoRslQ&usqp=CAU",
                distance: "Waikkala to Negambo:7.8 KM",
                address: "Waikkala,Sri Lanka",
-               oldPrice: "LKR 40",
-               AdultPrice: "LKR 60",
+               oldPrice:  40,
+               newPrice:  100,
                photos: [
                   {
                      id: "160",
@@ -419,19 +435,22 @@ const PlacesScreen = () => {
                   {
                      id: "45",
                      name: "Express Train",
+                     departureTime:"04.52 a.m",
+                     arrivalTime:"05.05 a.m"
                   },
                   {
                      id: "46",
                      name: "Local Train",
+                     departureTime:"05.22 a.m",
+                     arrivalTime:"05.44 a.m"
                   },
                   {
                      id: "47",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "48",
-                     name: "Luxury Train",
+                     departureTime:"06.54 a.m",
+                     arrivalTime:"07.10 a.m"
                   }
+                  
 
                ],
 
@@ -442,8 +461,8 @@ const PlacesScreen = () => {
                image: "https://slrailwayforum.com/content/images/2021/11/Chilaw-Railway-Station.jpg",
                distance: "Chilaw to Negambo:49.7 KM",
                address: "Chilaw,Sri Lanka",
-               ChildPrice: "LKR 400 ",
-               AdultPrice: "LKR 600",
+               oldPrice:  400 ,
+               newPrice:  700,
                photos: [
                   {
                      id: "170",
@@ -500,19 +519,22 @@ const PlacesScreen = () => {
                   {
                      id: "29",
                      name: "Express Train",
+                     departureTime:"08.40 a.m",
+                     arrivalTime:"09.50 a.m"
                   },
                   {
                      id: "30",
                      name: "Local Train",
+                     departureTime:"10.40 a.m",
+                     arrivalTime:"12.00 a.m"
                   },
                   {
                      id: "31",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "32",
-                     name: "Luxury Train",
+                     departureTime:"11.00 a.m",
+                     arrivalTime:"12.20 p.m"
                   }
+                 
 
                ],
 
@@ -533,8 +555,8 @@ const PlacesScreen = () => {
                image: "https://slrailwayforum.com/content/images/2021/11/Chilaw-Railway-Station.jpg",
                distance: "Colombo to Ella:49.7 KM",
                address: "Colombo,Sri Lanka",
-               ChildPrice: "LKR 400 ",
-               AdultPrice: "LKR 600",
+               oldPrice:  1400 ,
+               newPrice:  1500,
                photos: [
                   {
                      id: "190",
@@ -591,19 +613,22 @@ const PlacesScreen = () => {
                   {
                      id: "29",
                      name: "Express Train",
+                     departureTime:"05.55 a.m",
+                     arrivalTime:"15.14 p.m"
                   },
                   {
                      id: "30",
                      name: "Local Train",
+                     departureTime:"08.30 a.m",
+                     arrivalTime:"17.25 p.m"
                   },
                   {
                      id: "31",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "32",
-                     name: "Luxury Train",
+                     departureTime:"09.40 a.m",
+                     arrivalTime:"18.25 a.m"
                   }
+                  
 
                ],
 
@@ -614,8 +639,8 @@ const PlacesScreen = () => {
                image: "https://lh5.googleusercontent.com/p/AF1QipNsNFEUnvZr03m1Aelx9SSOKr9f369aVQIoJipd=w408-h306-k-no",
                distance: "Badulla to Ella:12 KM",
                address: "Badulla,Sri Lanka",
-               ChildPrice: "LKR 285 ",
-               AdultPrice: "LKR 500",
+               oldPrice:  285 ,
+               newPrice:  500,
                photos: [
                   {
                      id: "150",
@@ -672,19 +697,22 @@ const PlacesScreen = () => {
                   {
                      id: "29",
                      name: "Express Train",
+                     departureTime:"05.40 a.m",
+                     arrivalTime:"06.39 a.m"
                   },
                   {
                      id: "30",
                      name: "Local Train",
+                     departureTime:"08.00 a.m",
+                     arrivalTime:"08.43 a.m"
                   },
                   {
                      id: "31",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "32",
-                     name: "Luxury Train",
+                     departureTime:"09.30 a.m",
+                     arrivalTime:"10.25 a.m"
                   }
+                  
 
                ],
 
@@ -695,8 +723,8 @@ const PlacesScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOoAX_c46e0lU8tuPepI8Kyq92cJVOQ2tKVQ&usqp=CAU",
                distance: "Nanuoya to Ella:12 KM",
                address: "Nanuoya,Sri Lanka",
-               ChildPrice: "LKR 385 ",
-               AdultPrice: "LKR 600",
+               oldPrice:  385 ,
+               newtPrice:  600,
                photos: [
                   {
                      id: "181",
@@ -754,19 +782,22 @@ const PlacesScreen = () => {
                   {
                      id: "33",
                      name: "Express Train",
+                     departureTime:"04.43 a.m",
+                     arrivalTime:"07.18 a.m"
                   },
                   {
                      id: "34",
                      name: "Local Train",
+                     departureTime:"09.25 a.m",
+                     arrivalTime:"13.24 p.m"
                   },
                   {
                      id: "35",
                      name: "Intercity Train",
-                  },
-                  {
-                     id: "37",
-                     name: "Luxury Train",
+                     departureTime:"11.21 a.m",
+                     arrivalTime:"14.31 p.m"
                   }
+                  
 
                ],
 
@@ -798,20 +829,20 @@ const PlacesScreen = () => {
    console.log(searchPlaces)
 
    const compare = (a, b) => {
-      if (a.AdultPrice > b.AdultPrice) {
+      if(a.newPrice > b.newPrice){
          return -1;
-      }
-      if (a.AdultPrice < b.AdultPrice) {
+       }
+       if(a.newPrice < b.newPrice){
          return 1;
       }
       return 0;
    }
 
    const comparision = (a, b) => {
-      if (a.AdultPrice < b.AdultPrice) {
+      if(a.newPrice < b.newPrice){
          return -1;
-      }
-      if (a.AdultPrice > b.AdultPrice) {
+       }
+       if(a.newPrice > b.newPrice){
          return 1;
       }
       return 0;
@@ -868,8 +899,8 @@ const PlacesScreen = () => {
                   <PropertyCard
                      key={index}
                      Trains={route.params.Trains}
-                     children={route.params.children}
-                     adults={route.params.adults}
+                     oldPrice={route.params.oldPrice}
+                     newPrice={route.params.newPrice}
                      selectedDate={route.params.selectedDate}
                      property={property}
                      availableTrains={property.Trains}
