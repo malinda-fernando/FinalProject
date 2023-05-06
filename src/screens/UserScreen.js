@@ -80,12 +80,13 @@ const [phoneNumber, setPhoneNumber] = useState("");
              color: "red",
              fontSize: 20,
              textDecorationLine: "line-through",
+             marginLeft:5
            }}
          >
-           {route.params.oldPrice * route.params.adults}
+           Rs {(route.params.oldPrice) *((route.params.adults) + (route.params.children))}
          </Text>
-         <Text style={{ fontSize: 20 }}>
-           Rs {route.params.newPrice * route.params.adults}
+         <Text style={{ fontSize: 20, marginLeft:10 }}>
+         Rs {(route.params.newPrice) * ((route.params.adults) + (route.params.children))}
          </Text>
        </View>
        <Text>
@@ -94,8 +95,8 @@ const [phoneNumber, setPhoneNumber] = useState("");
      </View>
      <Pressable
        onPress={() => navigation.navigate("Confirmation",{
-        ChildPrice: route.params.ChildPrice,
-              AdultPrice: route.params. AdultPrice,
+              oldPrice: route.params.oldPrice,
+              newPrice: route.params. nPrice,
               name: route.params.name,
               children: route.params.children,
               adults: route.params.adults,

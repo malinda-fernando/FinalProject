@@ -2,7 +2,6 @@ import { StyleSheet, Text, View, SafeAreaView, Pressable, Image, ScrollView } fr
 import React, { useLayoutEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
 import { pixelNormalize } from '../components/Normalise';
 
 const PropertyInfoScreen = ({ }) => {
@@ -81,10 +80,10 @@ const PropertyInfoScreen = ({ }) => {
                 textDecorationLine: "line-through",
               }}
             >
-              Rs {route.params.oldPrice * route.params.adults}
+              Rs {(route.params.oldPrice) *((route.params.adults) + (route.params.children))}
             </Text>
             <Text style={{ fontSize: 20, marginLeft:10 }}>
-              Rs {route.params.newPrice * route.params.adults}
+              Rs {(route.params.newPrice) * ((route.params.adults) + (route.params.children))}
             </Text>
           </View>
              <View
@@ -230,7 +229,7 @@ const PropertyInfoScreen = ({ }) => {
           bottom: 20,
           padding: 15,
           width:"95%",
-          marginHorizontal:20,
+          marginHorizontal:10,
           marginTop:33
         }}
       >

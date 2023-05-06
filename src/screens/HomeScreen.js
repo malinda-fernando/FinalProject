@@ -4,7 +4,7 @@ import { Button } from "react-native-elements";
 import SearchTrainHeader from "../components/SearchTrainHeader";
 import { parameters } from "../global/styles";
 import DatePicker from "@react-native-community/datetimepicker";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { BottomModal, ModalContent, SlideAnimation } from "react-native-modals";
@@ -12,10 +12,11 @@ import { ModalFooter } from "react-native-modals";
 import { ModalButton } from "react-native-modals";
 import { ModalTitle } from "react-native-modals";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({  }) => {
+ const navigation = useNavigation();
+  const [Trains, setTrains] = useState();
+  const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
-  const [Trains, setTrains] = useState(1);
-  const [adults, setAdults] = useState(2);
   const [modalVisible, setModalVisible] = useState(false);
   const route = useRoute();
 
@@ -97,7 +98,9 @@ const HomeScreen = ({ navigation }) => {
               <Feather name="search" size={22} color="black" />
               <TextInput 
                 placeholderTextColor="black"
-                placeholder={route?.params?.input ? route.params.input : "Enter your destination"}
+                placeholder={
+                  route?.params ? route.params.input : "Enter Your Destination"
+                }
               />
             </Pressable>
           </View>

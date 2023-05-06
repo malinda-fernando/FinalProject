@@ -10,7 +10,9 @@ import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import PlacesScreen from "../screens/PlacesScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MapScreen from "../screens/MapScreen";
+import SavedScreen from "../screens/SavedScreen";
+import BookingScreen  from "../screens/BookingScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from '@expo/vector-icons';
@@ -125,8 +127,9 @@ export default function AuthStack() {
           ...TransitionPresets.RevealFromBottomAndroid,
         }}
       />
-       <Auth.Screen
-        name="Main"
+      
+      <Auth.Screen
+        name="Home1Screen"
         component={BottomTabs}
         options={{
           headerShown: false,

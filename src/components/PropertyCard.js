@@ -18,12 +18,14 @@ const PropertyCard = ({ Trains, children, property, adults, selectedDate, availa
         arrivalTime: property.arrivalTime,
         newPrice: property.newPrice,
         availableTrains: property.Trains,
-        adults: adults,
-        children: children,
+        adults:adults,
+        children:children,
         Trains: Trains,
-        
         selectedDate: selectedDate,
-      })} style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}>
+
+      })} 
+      style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}
+      >
         <View>
           <Image style={{ height: height / 4, width: 140 }} source={{ uri: property.image }} />
         </View>
@@ -36,8 +38,8 @@ const PropertyCard = ({ Trains, children, property, adults, selectedDate, availa
           <Text style={{ marginLeft: -208, backgroundColor: "#6CB4EE", borderRadius: 5, paddingVertical: 3 }}> {property.distance} </Text>
         </View>
         <Text style={{ width: 200, marginLeft: -207, marginTop: 90, fontWeight: "bold", color: "gray" }}>{property.address.length > 50 ? property.substr(0, 50) : property.address}</Text>
-        <Text style={{ marginTop: 4, fontSize: 13, fontWeight: "500", marginLeft: -204, marginTop: 115 }}>Price for destination ticket </Text>
-        <View style={{ marginTop: 5, alignItems: "center", gap: 8, marginLeft: -155, marginTop: 135 }}>
+        <Text style={{ marginTop: 4, fontSize: 13, fontWeight: "500", marginLeft: -204, marginTop: 115}}>Price for {adults} Adults and {children} children </Text>
+        <View style={{ marginTop: 5, alignItems: "center", gap: 8, marginLeft: -185, marginTop: 135 }}>
         <Text
               style={{
                 color: "red",
@@ -45,10 +47,10 @@ const PropertyCard = ({ Trains, children, property, adults, selectedDate, availa
                 textDecorationLine: "line-through",
               }}
 >
-              Rs  {property.oldPrice * adults}
+              Rs  {property.oldPrice * ((adults) + (children))}
             </Text>
             <Text style={{ fontSize: 18 }}>
-              Rs {property.newPrice * adults}
+              Rs {property.newPrice * ((adults) + (children))}
             </Text>
         </View>
 

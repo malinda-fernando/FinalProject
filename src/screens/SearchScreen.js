@@ -20,8 +20,8 @@ const SearchScreen = () => {
                image: "https://live.staticflickr.com/1891/43561949645_67a068c1ef_b.jpg",
                distance: "Negambo to Colombo: 38.9 KM",
                address: "Negambo,Sri Lanka",
-               ChildPrice:  200 ,
-               AdultPrice:  300,
+               oldPrice:  300 ,
+               newPrice:  200,
                photos: [
                   {
                      id: "100",
@@ -106,8 +106,8 @@ const SearchScreen = () => {
                image: "https://fastly.4sqi.net/img/general/width960/22329506_dndPVK-mUgZhJUdKnKb8h3eXYA7IjDvQvDqzmGX_On8.jpg",
                distance: "Ella to Colombo: 306.5 KM",
                address: "Ella,Sri Lanka",
-               ChildPrice: 530, 
-               AdultPrice:  600,
+               oldPrice: 600, 
+               newPrice:  530,
                photos: [{
                   id: "130",
                   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBvQmgove_u14Q1XzJoDwvRkhWRun5JOfRQg&usqp=CAU",
@@ -194,8 +194,8 @@ const SearchScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1bVONcxD-V5TJ7ekzpegtpFs2YbuGxlwtgA&usqp=CAU",
                distance: "Galle to Colombo: 125.3 KM",
                address: "Galle,Sri Lanka",
-               ChildPrice:  550 ,
-               AdultPrice:  900,
+               oldPrice:  900 ,
+               newPrice:  530,
                photos: [{
                   id: "110",
                   image:
@@ -286,8 +286,8 @@ const SearchScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1z2V1zWbzTptOiCLehWZJ4riAeUlZuMBRXEhhpELgEdlA6LefHSQwqFQStDkXbI7Uhfo&usqp=CAU",
                distance: "Colombo to Negambo: 37.4 KM",
                address: "Colombo,Sri Lanka",
-               oldPrice:  260 ,
-               newPrice:  340,
+               oldPrice:  340 ,
+               newPrice:  260,
                photos: [
                   {
                      id: "140",
@@ -371,7 +371,7 @@ const SearchScreen = () => {
                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSreN0L_goOHZHyvcjUSvbr3Nzcxg6TqoRslQ&usqp=CAU",
                distance: "Waikkala to Negambo:7.8 KM",
                address: "Waikkala,Sri Lanka",
-               oldPrice:  40,
+               oldPrice:  150,
                newPrice:  100,
                photos: [
                   {
@@ -455,8 +455,8 @@ const SearchScreen = () => {
                image: "https://slrailwayforum.com/content/images/2021/11/Chilaw-Railway-Station.jpg",
                distance: "Chilaw to Negambo:49.7 KM",
                address: "Chilaw,Sri Lanka",
-               oldPrice:  400 ,
-               newPrice:  700,
+               oldPrice:  800 ,
+               newPrice:  500,
                photos: [
                   {
                      id: "170",
@@ -718,7 +718,7 @@ const SearchScreen = () => {
                distance: "Nanuoya to Ella:12 KM",
                address: "Nanuoya,Sri Lanka",
                oldPrice:  385 ,
-               newtPrice:  600,
+               newPrice:  600,
                photos: [
                   {
                      id: "181",
@@ -802,7 +802,6 @@ const SearchScreen = () => {
       },
 
    ]
-
    return (
       <SafeAreaView>
          <View

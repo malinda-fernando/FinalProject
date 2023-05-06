@@ -56,13 +56,13 @@ const TrainScreen = () => {
                   textDecorationLine: "line-through",
                 }}
               >
-                Rs {route.params.oldPrice}
+                 Rs {(route.params.oldPrice) * ((route.params.adults) + (route.params.children))}
               </Text>
-                <Text style={{ marginHorizontal:20}}>Price : Rs{route.params.newPrice}</Text>
+                <Text style={{ marginHorizontal:20}}>Price : Rs {(route.params.newPrice) *((route.params.adults) + (route.params.children))}</Text>
             </View>
-            <View style={{ flexDirection:"row",alignItems:"center",marginTop:8}}>
-                <Text>departure time:{route.params.departureTime}</Text>
-                <Text style={{ marginHorizontal:47}}>arrival time:{route.params.arrivalTime}</Text>
+            <View style={{ flexDirection:"row",alignItems:"center",marginTop:8, marginLeft:5}}>
+                <Text>Departure time: {item.departureTime}</Text>
+                <Text style={{ marginHorizontal:47}}>Arrival time: {item.arrivalTime}</Text>
             </View>
             
             {selected.includes(item.name) ? (
@@ -130,8 +130,8 @@ const TrainScreen = () => {
         <Pressable
           onPress={() =>
             navigation.navigate("User", {
-             ChildPrice: route.params.ChildPrice,
-              AdultPrice: route.params. AdultPrice,
+             oldPrice: route.params.oldPrice,
+              newPrice: route.params.newPrice,
               name: route.params.name,
               children: route.params.children,
               adults: route.params.adults,
