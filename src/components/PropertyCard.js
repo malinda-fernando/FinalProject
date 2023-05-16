@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
-const PropertyCard = ({ Trains, children, property, adults, selectedDate, availableTrains }) => {
+const PropertyCard = ({ trains, children, property, adults, selectedDate, availabletrains }) => {
   const { width, height } = Dimensions.get("window");
   const navigation = useNavigation();
   return (
@@ -17,10 +17,10 @@ const PropertyCard = ({ Trains, children, property, adults, selectedDate, availa
         departureTime: property.departureTime,
         arrivalTime: property.arrivalTime,
         newPrice: property.newPrice,
-        availableTrains: property.Trains,
+        availabletrains: property.trains,
         adults:adults,
         children:children,
-        Trains: Trains,
+        trains: trains,
         selectedDate: selectedDate,
 
       })} 

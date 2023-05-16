@@ -1,14 +1,17 @@
-import React, { useState, useRef } from "react";
-import { View, Text, StyleSheet, Dimensions, TextInput, Alert } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
+import { View, Text, StyleSheet, Dimensions, TextInput, Alert, TouchableOpacity } from "react-native";
 import { colors, parameters, title } from "../../global/styles"
 import * as Animatable from "react-native-animatable"
 import { Icon, Button, SocialIcon } from 'react-native-elements'
 import Header from '../../components/Header'
 import { auth } from "../../../firebase";
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 
 
-export default function SignInScreen({ navigation }) {
+
+export default function SignInScreen() {
 
   const [TextInput2Fossued, setTextInput2Fossued] = useState(false)
 
@@ -17,17 +20,37 @@ export default function SignInScreen({ navigation }) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigation = useNavigation();
+   
 
-  const handleSignIn = async () => {
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      console.log('Signed In')
-      navigation.navigate('HomeScreen');
-    } catch (error) {
-      console.log(error);
-      Alert.alert(error.message);
-    }
-  };
+  const login = () => {
+    signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
+       console.log("user credential", userCredential);
+       const user = userCredential.user;
+       console.log("user details", user);
+       navigation.navigate("Main")
+    })
+}
+ 
+
+const resetPassword=()=>{
+  if(email!=null)
+  {
+    sendPasswordResetEmail(auth, email)
+  .then(() => {
+    Alert.alert("password reset email has been sent successfully")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    Alert.alert(errorMessage);
+  });
+
+  }
+  else{
+    Alert.alert("Please enter a valid email")
+  }
+}
 
 
   return (
@@ -93,14 +116,15 @@ export default function SignInScreen({ navigation }) {
           title="SIGN IN"
           buttonStyle={parameters.styledButton}
           titleStyle={parameters.buttonTitle}
-          onPress={handleSignIn} />
+          onPress={login} />
 
 
       </View>
 
-      <View style={{ alignItems: "center", marginTop: 19 }}>
+      <TouchableOpacity style={{ alignItems: "center", marginTop: 19 }}
+      onPress={() => resetPassword()}>
         <Text style={{ ...styles.text1, textDecorationLine: "underline" }}>Forgot Password ?</Text>
-      </View>
+      </TouchableOpacity >
       <View style={{ alignItems: "center", marginTop: 12, marginBottom: 20 }}>
         <Text style={{ fontSize: 20, fontWeight: "bold" }}> OR</Text>
       </View>

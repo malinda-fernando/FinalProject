@@ -5,11 +5,12 @@ import { colors, parameters, title } from "../../global/styles"
 import * as Animatable from "react-native-animatable"
 import { Icon, Button, SocialIcon } from 'react-native-elements'
 
+
 import { Colors } from "react-native/Libraries/NewAppScreen";
 const { height } = Dimensions.get("window");
 
 
-export default function WelcomeScreen({ navigation }) {
+export default function WelcomeScreen({navigation}) {
     return (
 
         <SafeAreaView>

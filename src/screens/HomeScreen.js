@@ -14,7 +14,7 @@ import { ModalTitle } from "react-native-modals";
 
 const HomeScreen = ({  }) => {
  const navigation = useNavigation();
-  const [Trains, setTrains] = useState();
+
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
@@ -32,7 +32,7 @@ const HomeScreen = ({  }) => {
     return `${formattedDate.getDate()}/${formattedDate.getMonth() + 1
       }/${formattedDate.getFullYear()}`;
   };
-  console.log(route.params);
+
 
 
   const searchPlaces = (place) => {
@@ -55,7 +55,7 @@ const HomeScreen = ({  }) => {
 
     if (route.params && selectedDate) {
       navigation.navigate("PlacesScreen", {
-        Trains: Trains,
+  
         adults: adults,
         children: children,
         selectedDate: selectedDate,
@@ -69,11 +69,11 @@ const HomeScreen = ({  }) => {
   return (
     <>
       <View style={styles.container}>
-        <SearchTrainHeader />
+        <SearchTrainHeader  navigation={navigation}/>
 
         <View style={{ marginLeft: 20, marginTop: 16 }}>
-          <Text style={styles.title2}> Where do you</Text>
-          <Text style={styles.title2}> want to go?</Text>
+          <Text style={styles.title2}> Find your</Text>
+          <Text style={styles.title2}> Destination</Text>
         </View>
 
         <View style={{ marginTop: 30 }}>
@@ -99,8 +99,9 @@ const HomeScreen = ({  }) => {
               <TextInput 
                 placeholderTextColor="black"
                 placeholder={
-                  route?.params ? route.params.input : "Enter Your Destination"
+                  route?.params ? route.params ?.input : "Enter Your Destination"
                 }
+                
               />
             </Pressable>
           </View>

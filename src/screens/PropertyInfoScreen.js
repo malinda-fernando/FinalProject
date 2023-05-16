@@ -119,105 +119,17 @@ const PropertyInfoScreen = ({ }) => {
         <Text style={{borderColor:"#E0E0E0", borderWidth:3, height:1, marginTop:10}}/> 
 
             </ScrollView>
-            <Text
-            style={{ marginHorizontal: 20, fontSize: 15, fontWeight: "500" }}
-          >
-            Travel More spend less
-          </Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <Pressable
-              style={{
-                width: 200,
-                height: 150,
-                marginTop: 10,
-                backgroundColor: "#003580",
-                borderRadius: 10,
-                padding: 20,
-                marginHorizontal: 20,
-              }}
-            >
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 15,
-                  fontWeight: "bold",
-                  marginVertical: 7,
-                }}
-              >
-                Genius
-              </Text>
-              <Text style={{ color: "white", fontSize: 15, fontWeight: "500" }}>
-              The World is a book, and those who do not travel read only a page.
-              </Text>
-            </Pressable>
-
-            <Pressable
-              style={{
-                width: 200,
-                height: 150,
-                marginTop: 10,
-                borderColor: "#E0E0E0",
-                borderWidth: 2,
-                borderRadius: 10,
-                backgroundColor: "#003580",
-                padding: 20,
-                marginHorizontal: 10,
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: "bold",
-                  marginVertical: 7,
-                  color: "white"
-                }}
-              >
-                15% Discounts
-              </Text>
-              <Text style={{ fontSize: 15, fontWeight: "500",color: "white" }}>
-              There are most famous hotels and resturants around the station.
-              </Text>
-            </Pressable>
-
-            <Pressable
-              style={{
-                width: 200,
-                height: 150,
-                marginTop: 10,
-                borderColor: "#E0E0E0",
-                borderWidth: 2,
-                borderRadius: 10,
-                backgroundColor: "#003580",
-                padding: 20,
-                marginHorizontal: 20,
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: "bold",
-                  marginVertical: 7,
-                  color: "white"
-                }}
-              >
-                10% Discounts
-              </Text>
-              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>
-                Enjoy Discounts at participating at properties worldwide
-              </Text>
-            </Pressable>
-          </ScrollView> 
-
+           
           <Pressable
       onPress={() => navigation.navigate("Train",{
-        Trains:route.params.availableTrains,
+        trains:route.params.availabletrains,
         oldPrice:route.params.oldPrice,
         newPrice:route.params.newPrice,
         name:route.params.name,
         children:route.params.children,
         adults:route.params.adults,
         distance:route.params.distance,
-        startDate:route.params.selectedDate,
+        selectedDate: route.params.selectedDate,
         departureTime:route.params.departureTime ,
         arrivalTime:route.params.arrivalTime
        
@@ -230,7 +142,7 @@ const PropertyInfoScreen = ({ }) => {
           padding: 15,
           width:"95%",
           marginHorizontal:10,
-          marginTop:33
+          marginTop:93
         }}
       >
         <Text style={{ textAlign: "center", color: "white",fontWeight:"bold",fontSize:17 }}>

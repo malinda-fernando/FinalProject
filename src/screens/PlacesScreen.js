@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { useState, useEffect } from 'react'
+import { useNavigation, useRoute} from '@react-navigation/native'
 import Header from '../components/Header'
 import { BottomModal, ModalContent } from "react-native-modals";
 import { Octicons } from '@expo/vector-icons';
@@ -11,6 +11,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import PropertyCard from '../components/PropertyCard';
 import { ModalFooter, SlideAnimation, ModalTitle } from 'react-native-modals';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
+import { ListItemBase } from 'react-native-elements/dist/list/ListItemBase';
+
 const PlacesScreen = () => {
    const route = useRoute();
    const data = [
@@ -58,28 +62,10 @@ const PlacesScreen = () => {
                      image:
                         "https://cf.bstatic.com/xdata/images/hotel/max1280x900/433845662.jpg?k=94bdc326cbec92e658a262a7d81387e65ede9d250489b1a3cc6d22d6b9c935ff&o=&hp=1",
                   },
-                  {
-                     id: "106",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ZTR8LwWdfiVojXO_RKaIiMxSwECMPGepkQ&usqp=CAU",
-                  },
-                  {
-                     id: "107",
-                     image:
-                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/433845623.jpg?k=dc33256ff9ff9eda46683c776c1cf9af04910364ec8d1d9523b8cf80d18cca65&o=&hp=1",
-                  },
-                  {
-                     id: "108",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrNwnsbr5CtKmMmQQ_D4RZOn8VzoQgJ2K2ew&usqp=CAU",
-                  },
-                  {
-                     id: "109",
-                     image:
-                        "2",
-                  },
+                 
+                 
                ],
-               Trains: [
+               trains: [
                   {
                      id: "202",
                      name: "Express train",
@@ -143,29 +129,9 @@ const PlacesScreen = () => {
                   image:
                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRugwcxctyIReFqw1YNp_XVfhGac7vhNBtQPOeTPJpVDzDn0FYPcKthD3nIJYTLYF6Nlwc&usqp=CAU",
                },
-               {
-                  id: "125",
-                  image:
-                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS01dzhMbAyr0fz-zTYfWwOfTvZzrz2J64gOFY-e6kPIav_c5VIK2X4HfEb8ZvAdl6Fzdw&usqp=CAU",
-               },
-               {
-                  id: "126",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvhyxc2auLwQ7SWVk7HKgVb8WhSfxhXq9XOT3ZrKJyKoXfAas04NN7fEw7_Xz8A382Xg&usqp=CAU",
-
-               },
-               {
-                  id: "127",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcXuOjBsGP_GECehuJjPDmpmSms_nEvurbvA&usqp=CAU",
-
-
-
-               },
-               {
-                  id: "128",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk9TxHbVz1UnMHhe7uMZnrX9Mxm865CIyAMQ&usqp=CAU",
-               },
+              
                ],
-               Trains: [
+               trains: [
                   {
                      id: "105",
                      name: "Express Train",
@@ -184,13 +150,7 @@ const PlacesScreen = () => {
                      departureTime:"11.40 a.m",
                      arrivalTime:"23.15 p.m"
                   },
-                  {
-                     id: "108",
-                     name: "Luxury Train",
-                     departureTime:"5.40 a.m",
-                     arrivalTime:"14.15 p.m"
-                  }
-
+                  
                ],
 
             },
@@ -231,28 +191,10 @@ const PlacesScreen = () => {
                   image:
                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_Cus5kTHxLM2VJFbXvZwVPByhuTY1ed8tA&usqp=CAU",
                },
-               {
-                  id: "116",
-                  image:
-                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVR5o_BKQLsp8mMbylNjQyq2OfktL2Jf5C3A&usqp=CAU",
-               },
-               {
-                  id: "117",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRES-3hMPM2DZ2QjG75uV57LHWqYjw00lyAuw&usqp=CAU",
-
-               },
-               {
-                  id: "118",
-                  image:
-                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpCeZKN7Fy5RuNjoRzEKaB5kTnVIxCSnX1g&usqp=CAU",
-               },
-               {
-                  id: "119",
-                  image: "https://www.elysiumsrilanka.com/images/satin-doll-home.jpg",
-               },
+              
                ],
 
-               Trains: [
+               trains: [
                   {
                      id: "101",
                      name: "Express Train",
@@ -280,7 +222,6 @@ const PlacesScreen = () => {
 
 
       },
-
       {
          id: "1",
          place: "Negombo",
@@ -325,29 +266,10 @@ const PlacesScreen = () => {
                      image:
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShj4jT7n26OhCyOX7-Kfbx1DvX19ZDQnR1HA&usqp=CAU",
                   },
-                  {
-                     id: "146",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa9Yqz6Rkgwii9xEebOqtKmwwgVS3Bj1BwHQ&usqp=CAU",
-                  },
-                  {
-                     id: "147",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXK0daZbKzBHA4jkKnpIpcF2aRN75euJaYlw&usqp=CAU",
-                  },
-                  {
-                     id: "148",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs9_lig0V8naDCy59gShVeEvLnC7EeW04ueQ&usqp=CAU",
-                  },
-                  {
-                     id: "149",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ01oo0arU4-MyQqc7RJnl6u_8j1FTjNmTLUw&usqp=CAU",
-                  },
+                   
                ],
 
-               Trains: [
+               trains: [
                   {
                      id: "25",
                      name: "Express Train",
@@ -431,7 +353,7 @@ const PlacesScreen = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlaBLexkdkx-thPPe-yUDoUMRSBVanL1iNOA&usqp=CAU",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "45",
                      name: "Express Train",
@@ -515,7 +437,7 @@ const PlacesScreen = () => {
                         "https://www.srilankanexpeditions.com/images/destinations-in-sri-lanka/best-things-to-do-in-chilaw/slider1.jpg",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "29",
                      name: "Express Train",
@@ -609,7 +531,7 @@ const PlacesScreen = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ01oo0arU4-MyQqc7RJnl6u_8j1FTjNmTLUw&usqp=CAU",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "29",
                      name: "Express Train",
@@ -693,7 +615,7 @@ const PlacesScreen = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3_ZZE0oqaWqWUxHmOtV9ul_WmrGNtOfYlPQ&usqp=CAU",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "29",
                      name: "Express Train",
@@ -778,7 +700,7 @@ const PlacesScreen = () => {
 
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "33",
                      name: "Express Train",
@@ -807,8 +729,8 @@ const PlacesScreen = () => {
 
       },
 
-   ]
-   console.log(route.params)
+   ];
+
    const navigation = useNavigation();
    const [modalVisible, setModalVisible] = useState(false)
    const [selectedFilter, setSelectedFilter] = useState([]);
@@ -824,9 +746,36 @@ const PlacesScreen = () => {
          filter: "cost:High to Low",
       },
    ];
+   
+   const [loading,setLoading] = useState(false);
+   const [items,setItems] = useState([]);
+   useEffect(() => {
+     if (items.length > 0) return;
+ 
+     setLoading(true);
+ 
+     const fetchProducts = async () => {
+       const colRef = collection(db,"places");
+       const docsSnap = await getDocs(colRef);
+       docsSnap.forEach((doc) => {
+         items.push(doc.data());
+         console.log("a"+doc.data());
+       });
+       setLoading(false);
+     };
+     fetchProducts();
+   }, [items]);
+   
+    console.log("ab"+data);
+
+  console.log("bc"+ items);
+
+ 
+  
+  
    const searchPlaces = data?.filter((item) => item.place === route.params.place);
-   const [sortedData, setSortedData] = useState(data);
-   console.log(searchPlaces)
+   const [sortedData, setSortedData] = useState(items);
+   console.log("x"+ route.params.place)
 
    const compare = (a, b) => {
       if(a.newPrice > b.newPrice){
@@ -861,6 +810,9 @@ const PlacesScreen = () => {
             break;
       }
    }
+   console.log(route.params);
+
+   
    return (
       <View style={styles.container}>
          <Header title="Arrival Places" type="arrow-left" navigation={navigation} />
@@ -892,22 +844,31 @@ const PlacesScreen = () => {
             </Pressable>
          </Pressable>
 
-         <ScrollView styles={{ backgroundColor: "#F5F5F5" }}>
-            {sortedData
-               ?.filter((item) => item.place === route.params.place)
-               .map((item) => item.properties.map((property, index) => (
-                  <PropertyCard
-                     key={index}
-                     Trains={route.params.Trains}
-                     
-                     adults={route.params.adults}
-                     children={route.params.children}
-                     selectedDate={route.params.selectedDate}
-                     property={property}
-                     availableTrains={property.Trains}
-                  />))
-               )}
-         </ScrollView>
+{loading ? (
+   <Text>Fetching places...</Text>
+) : (
+   <ScrollView style={{ backgroundColor: "#F5F5F5" }}>
+   {sortedData
+     ?.filter((item) => item.place === route.params.place)
+     .map((item) =>
+       item.properties.map((property, index) => (
+         <PropertyCard
+           key={index}
+           trains={route.params.trains}
+           children={route.params.children}
+           adults={route.params.adults}
+           selectedDate={route.params.selectedDate}
+           property={property}
+           availabletrains={property.trains}
+         />
+       ))
+     )}
+ </ScrollView>
+)}
+     
+        
+
+         
 
          <BottomModal style={{ height: 800 }} onBackdropPress={() => setModalVisible(!modalVisible)}
             swipeDirection={["up", "down"]} swipeThreshold={700} footer={<ModalFooter>

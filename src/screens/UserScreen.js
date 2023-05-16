@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View, Alert } from 'react-native'
 import React,{useLayoutEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -29,6 +29,38 @@ const [firstName, setFirstName] = useState("");
 const [lastName, setLastName] = useState("");
 const [email, setEmail] = useState("");
 const [phoneNumber, setPhoneNumber] = useState("");
+
+const finalStep = () => {
+  if (!firstName || !lastName || !email || !phoneNumber) {
+    Alert.alert(
+      "Invalide Details",
+      "Please enter all the fields",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") },
+      ],
+      { cancelable: false }
+    );
+  }
+
+
+  if (firstName && lastName && email && phoneNumber) {
+    navigation.navigate("Confirmation",{
+      oldPrice: route.params.oldPrice,
+      newPrice: route.params.newPrice,
+      name: route.params.name,
+      children: route.params.children,
+      adults: route.params.adults,
+      distance: route.params.distance,
+      selectedDate: route.params.selectedDate,
+      trains:route.params.trains
+    });
+  }
+};
   return (
     <>
     <View style={{padding:20}}>
@@ -94,15 +126,7 @@ const [phoneNumber, setPhoneNumber] = useState("");
        </Text>
      </View>
      <Pressable
-       onPress={() => navigation.navigate("Confirmation",{
-              oldPrice: route.params.oldPrice,
-              newPrice: route.params. nPrice,
-              name: route.params.name,
-              children: route.params.children,
-              adults: route.params.adults,
-              distance: route.params.distance,
-             selectedDate: route.params.selectedDate,
-       })}
+       onPress={finalStep}
        style={{ backgroundColor: "#007FFF", padding: 10, borderRadius: 5 }}
      >
        <Text style={{ textAlign: "center", color: "white", fontSize: 15 }}>

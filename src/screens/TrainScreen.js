@@ -29,7 +29,7 @@ const TrainScreen = () => {
     return (
         <>
        <ScrollView>
-        {route.params.Trains.map((item,index) => (
+        {route.params.trains.map((item,index) => (
             <Pressable style={{margin:10, backgroundColor:"white", padding:10}} key={index}>
                 <View style={{
                 flexDirection: "row",
@@ -48,18 +48,6 @@ const TrainScreen = () => {
             </Text>
            
 
-            <View style={{marginTop:6, flexDirection:"row",alignItems:"center"}}>
-            <Text
-                style={{
-                  fontSize: 18,
-                  color: "red",
-                  textDecorationLine: "line-through",
-                }}
-              >
-                 Rs {(route.params.oldPrice) * ((route.params.adults) + (route.params.children))}
-              </Text>
-                <Text style={{ marginHorizontal:20}}>Price : Rs {(route.params.newPrice) *((route.params.adults) + (route.params.children))}</Text>
-            </View>
             <View style={{ flexDirection:"row",alignItems:"center",marginTop:8, marginLeft:5}}>
                 <Text>Departure time: {item.departureTime}</Text>
                 <Text style={{ marginHorizontal:47}}>Arrival time: {item.arrivalTime}</Text>
@@ -136,7 +124,8 @@ const TrainScreen = () => {
               children: route.params.children,
               adults: route.params.adults,
               distance: route.params.distance,
-             selectedDate: route.params.selectedDate,
+              selectedDate: route.params.selectedDate,
+              trains:route.params.trains
             
             })
           }

@@ -4,7 +4,7 @@ import { Icon } from "react-native-elements"
 import { colors, parameters } from '../global/styles'
 
 
-export default function SearchTrainHeader() {
+export default function SearchTrainHeader({navigation}) {
     return (
         <View style={styles.header}>
             <View style={{ alignItems: 'center', justifyContent: 'center', marginLeft: 15, marginTop: -6 }}>
@@ -13,6 +13,9 @@ export default function SearchTrainHeader() {
                     name="menu"
                     color={colors.cardbackground}
                     size={32}
+                    onPress={()=>{
+                 navigation.toggleDrawer()
+                    }}
                 />
             </View>
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>

@@ -5,49 +5,51 @@ import Header from '../../components/Header'
 import { Formik } from 'formik';
 import {Icon,Button} from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
-import { auth,  } from '../../../firebase';
+import { auth, db } from '../../../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc,doc } from 'firebase/firestore';
+import { useNavigation} from '@react-navigation/native'
 
 
-const initialValues = {FirstName:"",LastName:"",email:"",phone_number:'',password:""}
-
-
-const SignUpScreen = ({navigation}) => {
-
+const SignUpScreen = () => {
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
 const[passwordFocussed, setPasswordFocussed] = useState(false)
-const[passwordBlured,setPasswordBlured] = useState(false)
+const[passwordBlured,setPasswordBlured] = useState(false) 
+const [phone,setPhone] = useState("");
+const navigation = useNavigation();
 
-const register =() => {
-  if(phone_number ==="" || FirstName ==="" || LastName ==="" || email ==="" || password === ""){
-    Alert.alert(
-      "Invalid Details",
-      "Please enter all the credentials",
-    [
-      {
-        text:"Cancel",
-        onPress:()=> console.log("Cancel Pressed"),
-        style:"cancel"
-      },
-      {
-        text:"OK", onPress: () => console.log("OK Pressed")
+const register = () => {
+
+ navigation.navigate("Main")
+  if(email === "" || password === "" || phone === "" ){
+      Alert.alert(
+          "Invalid Detials",
+          "Please enter all the credentials",
+          [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel"
+            },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ],
+          { cancelable: false }
+        );
+        }
+        createUserWithEmailAndPassword(auth,email,password).then((userCredentials) =>{
+
+          const user = userCredentials._tokenResponse.email;
+          const uid = auth.currentUser.uid;
+
+           setDoc(doc(db,"users",`${uid}`),{
+               email:user,
+               phone:phone
+           })
+      })
+        
       }
-    ],
-    { cancelable: false }
-    );
-  }
-}
-const handleSignUp = (values) => {
-  const {  email, password } = values;
-  auth 
-  .createUserWithEmailAndPassword(email, password)
-
-  .then (userCredentials => {
-    const user = userCredentials.user;
-   
-    console.log("user profile created successfully");
-    navigation.navigate("SearchTrainScreen")
-  })
-  .catch(error => alert(error.message))
-}
+      
     return (
         <View style = {styles.container}>
            <Header title ="MY ACCOUNT"  type ="arrow-left" navigation ={navigation}/> 
@@ -55,43 +57,14 @@ const handleSignUp = (values) => {
                 <View style = {styles.view1}>
                     <Text style ={styles.text1}>Sign-Up</Text>
                 </View>
-                <Formik initialValues ={initialValues} onSubmit = {(values)=>{handleSignUp(values)}} >
-                  {(props)=>(
+               
                         <View style ={styles.view2}>
                             <View>
                                 <Text style ={styles.text2}>New on GoTrain ?</Text>
                             </View>
-                            <View style ={styles.view6}>
-                                  <TextInput 
-                                    placeholder = "Mobile Number"
-                                    style = {styles.input1}
-                                    keyboardType ="number-pad"
-                                    autoFocus = {true}
-                                    onChangeText = {props.handleChange('phone_number')}
-                                    value = {props.values.phone_number}
-                                  />
-                               </View>
-                               
-                               
+                           
 
-                               <View style ={styles.view6}>
-                                  <TextInput 
-                                    placeholder = "FirstName"
-                                    style = {styles.input1}
-                                    autoFocus = {false}
-                                    onChangeText = {props.handleChange('FirstName')}
-                                    value = {props.values.FirstName}
-                                  />
-                               </View>
-                               <View style ={styles.view6}>
-                                  <TextInput 
-                                    placeholder = "LastName"
-                                    style = {styles.input1}
-                                    autoFocus = {false}
-                                    onChangeText = {props.handleChange('LastName')}
-                                    value = {props.values.LastName}
-                                  />
-                               </View>
+                          
                                <View style ={styles.view10}>
                                   <View>
                                       <Icon 
@@ -106,8 +79,8 @@ const handleSignUp = (values) => {
                                           placeholder = "Email"
                                           style = {styles.input4}
                                           autoFocus = {false}
-                                          onChangeText = {props.handleChange('email')}
-                                          value = {props.values.email}
+                                          value={email}
+                                          onChangeText={(text) => setEmail(text)}
                                         />
                                    </View>
                                </View>
@@ -123,8 +96,8 @@ const handleSignUp = (values) => {
                                           secureTextEntry
                                           style = {{flex:1}}
                                           autoFocus = {false}
-                                          onChangeText = {props.handleChange('password')}
-                                          value = {props.values.password}
+                                           value={password}
+                                      onChangeText={(text) => setPassword(text)}
                                           onFocus = {()=>{setPasswordFocussed(true)}}
                                           onBlur = {()=>{setPasswordBlured(true)}}
                                         />
@@ -132,6 +105,21 @@ const handleSignUp = (values) => {
                                        <Icon name ="visibility-off" color ={colors.grey3}  type = "material" style ={{marginRight:10}}/>
                                     </Animatable.View>      
                                </View>
+
+                               <View style ={styles.TextInput1}>
+             
+            <TextInput
+              value={phone}
+              onChangeText={(text) => setPhone(text)}
+              placeholder=" Phone No"
+              placeholderTextColor={"g"}
+              style ={{ marginTop:10  }} 
+              
+              
+              
+            />
+          </View>
+        
 
                                <View style ={styles.view15}>
                                   <Text style ={styles.text3}>By creating or logging into an account you are</Text>
@@ -147,14 +135,13 @@ const handleSignUp = (values) => {
                                       title = "Create my account"
                                       buttonStyle = {styles.button1}
                                       titleStyle ={styles.title1}
-                                      onPress = {props.handleSubmit}
+                                      onPress = {register}
                                      
                                    />
                                </View>
                         </View>
 
-                  )}
-                </Formik>
+                
                 <View style = {styles.view18}>
                    <Text style ={styles.text5}>OR</Text>
                 </View>
@@ -201,6 +188,16 @@ const styles = StyleSheet.create({
       view2:{justifyContent:'flex-start',
              backgroundColor:'white',
              paddingHorizontal:15
+            },
+
+            TextInput1: {
+              borderWidth: 1,
+              borderColor: "#86939e",
+              marginTop:20,
+              borderRadius: 10,
+              marginBottom: 20,
+              height: 50,
+              paddingLeft: 15
             },
 
       view3:{marginTop:5,
@@ -287,8 +284,9 @@ const styles = StyleSheet.create({
 
        input4:{fontSize:16,
               marginLeft: -20,
-              marginBottom:-10
-               },      
+              marginBottom:-20,
+              marginTop:10
+             },      
 
      view13:  {flexDirection:"row",
               height:40,
@@ -301,8 +299,14 @@ const styles = StyleSheet.create({
       flexDirection:"row",
       justifyContent:"space-between",
       alignContent:"center",
+
       alignItems:"center",
       height:50,
+
+
+
+
+
       paddingLeft:15,
       marginTop:20
     },       

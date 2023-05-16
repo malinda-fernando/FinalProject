@@ -3,20 +3,22 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 
-const SearchResults = ({ data, input, setInput }) => {
+const SearchResults = ({ data, input, setInput}) => {
     const navigation = useNavigation();
     return (
         <View style={{ padding: 10 }}>
             <FlatList data={data} renderItem={({ item }) => {
-                if (item.place.toLowerCase().includes(input.toLowerCase())) {
-                    if (input === "") {
-                        return null;
-                    }
+               const place = item.place || '';
+               console.log('Item:', item);
+                if (place.toLowerCase().includes(input.toLowerCase())) {
+                   if (input === '') {
+                     return null;
+                   }
                     return (
                         <Pressable onPress={() => {
                             setInput(item.place);
-                            navigation.navigate("HomeScreen", {
-                                input: item.place
+                            navigation.navigate("Home",{
+                                input:item.place
                             })
                         }}
                             style={{ flexDirection: "row", alignItems: "center", marginVertical: 10 }}>

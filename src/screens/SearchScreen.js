@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, SafeAreaView, TextInput } from "react-native";
-import React, { useState, useRef } from "react";
-
+import React, { useState, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
 import SearchResults from "../components/SearchResults";
-import { set } from "react-native-reanimated";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const SearchScreen = () => {
    const [input, setInput] = useState("");
@@ -52,28 +52,10 @@ const SearchScreen = () => {
                      image:
                         "https://cf.bstatic.com/xdata/images/hotel/max1280x900/433845662.jpg?k=94bdc326cbec92e658a262a7d81387e65ede9d250489b1a3cc6d22d6b9c935ff&o=&hp=1",
                   },
-                  {
-                     id: "106",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ZTR8LwWdfiVojXO_RKaIiMxSwECMPGepkQ&usqp=CAU",
-                  },
-                  {
-                     id: "107",
-                     image:
-                        "https://cf.bstatic.com/xdata/images/hotel/max1280x900/433845623.jpg?k=dc33256ff9ff9eda46683c776c1cf9af04910364ec8d1d9523b8cf80d18cca65&o=&hp=1",
-                  },
-                  {
-                     id: "108",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrNwnsbr5CtKmMmQQ_D4RZOn8VzoQgJ2K2ew&usqp=CAU",
-                  },
-                  {
-                     id: "109",
-                     image:
-                        "2",
-                  },
+                 
+                 
                ],
-               Trains: [
+               trains: [
                   {
                      id: "202",
                      name: "Express train",
@@ -100,6 +82,7 @@ const SearchScreen = () => {
                ],
             },
 
+
             {
                id: "11",
                name: "Ella Train Station",
@@ -120,7 +103,7 @@ const SearchScreen = () => {
                },
                {
                   id: "121",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwojM_BETO5AsVrdFevTPrXCCY90c0wu-GQ&usqp=CAU"
+                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlwojM_BETO5AsVrdFevTPrXCCY90c0wu-GQ&usqp=CAU",
                },
                {
                   id: "122",
@@ -137,29 +120,11 @@ const SearchScreen = () => {
                   image:
                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRugwcxctyIReFqw1YNp_XVfhGac7vhNBtQPOeTPJpVDzDn0FYPcKthD3nIJYTLYF6Nlwc&usqp=CAU",
                },
-               {
-                  id: "125",
-                  image:
-                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS01dzhMbAyr0fz-zTYfWwOfTvZzrz2J64gOFY-e6kPIav_c5VIK2X4HfEb8ZvAdl6Fzdw&usqp=CAU",
-               },
-               {
-                  id: "126",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvhyxc2auLwQ7SWVk7HKgVb8WhSfxhXq9XOT3ZrKJyKoXfAas04NN7fEw7_Xz8A382Xg&usqp=CAU",
-
-               },
-               {
-                  id: "127",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcXuOjBsGP_GECehuJjPDmpmSms_nEvurbvA&usqp=CAU",
-
-
-
-               },
-               {
-                  id: "128",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk9TxHbVz1UnMHhe7uMZnrX9Mxm865CIyAMQ&usqp=CAU",
-               },
+               
+              
+              
                ],
-               Trains: [
+               trains: [
                   {
                      id: "105",
                      name: "Express Train",
@@ -178,13 +143,7 @@ const SearchScreen = () => {
                      departureTime:"11.40 a.m",
                      arrivalTime:"23.15 p.m"
                   },
-                  {
-                     id: "108",
-                     name: "Luxury Train",
-                     departureTime:"5.40 a.m",
-                     arrivalTime:"14.15 p.m"
-                  }
-
+                  
                ],
 
             },
@@ -225,28 +184,11 @@ const SearchScreen = () => {
                   image:
                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_Cus5kTHxLM2VJFbXvZwVPByhuTY1ed8tA&usqp=CAU",
                },
-               {
-                  id: "116",
-                  image:
-                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVR5o_BKQLsp8mMbylNjQyq2OfktL2Jf5C3A&usqp=CAU",
-               },
-               {
-                  id: "117",
-                  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRES-3hMPM2DZ2QjG75uV57LHWqYjw00lyAuw&usqp=CAU",
-
-               },
-               {
-                  id: "118",
-                  image:
-                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpCeZKN7Fy5RuNjoRzEKaB5kTnVIxCSnX1g&usqp=CAU",
-               },
-               {
-                  id: "119",
-                  image: "https://www.elysiumsrilanka.com/images/satin-doll-home.jpg",
-               },
+               
+              
                ],
 
-               Trains: [
+               trains: [
                   {
                      id: "101",
                      name: "Express Train",
@@ -341,7 +283,7 @@ const SearchScreen = () => {
                   },
                ],
 
-               Trains: [
+               trains: [
                   {
                      id: "25",
                      name: "Express Train",
@@ -365,6 +307,7 @@ const SearchScreen = () => {
                ],
 
             },
+
             {
                id: "14",
                name: "Waikkala Train Station",
@@ -403,29 +346,10 @@ const SearchScreen = () => {
                      id: "165",
                      image:
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSPcX-EtdUqxhGdkGuYwwDnvvTNsAbyR941g&usqp=CAU",
-                  },
-                  {
-                     id: "166",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUal9rmx_hhH-mjqhiepgi7nC2LhF6cxfq-g&usqp=CAU",
-                  },
-                  {
-                     id: "167",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo8xrmadyYLa_FPF2qd7xMpKnZXxfKItjXWg&usqp=CAU",
-                  },
-                  {
-                     id: "168",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV-coZuB6E9hqFoSwmmEQFEj507yJtgjVaDUD-Nu44RrOJGPXtNdkmwZym4wBwi_vyGQ8&usqp=CAU",
-                  },
-                  {
-                     id: "169",
-                     image:
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlaBLexkdkx-thPPe-yUDoUMRSBVanL1iNOA&usqp=CAU",
-                  },
+                  }
+                  
                ],
-               Trains: [
+               trains: [
                   {
                      id: "45",
                      name: "Express Train",
@@ -436,7 +360,7 @@ const SearchScreen = () => {
                      id: "46",
                      name: "Local Train",
                      departureTime:"05.22 a.m",
-                     arrivalTime:"05.44 a.m"
+                     arrivalTime:"05.50 a.m"
                   },
                   {
                      id: "47",
@@ -509,7 +433,7 @@ const SearchScreen = () => {
                         "https://www.srilankanexpeditions.com/images/destinations-in-sri-lanka/best-things-to-do-in-chilaw/slider1.jpg",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "29",
                      name: "Express Train",
@@ -603,7 +527,7 @@ const SearchScreen = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ01oo0arU4-MyQqc7RJnl6u_8j1FTjNmTLUw&usqp=CAU",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "29",
                      name: "Express Train",
@@ -687,7 +611,7 @@ const SearchScreen = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3_ZZE0oqaWqWUxHmOtV9ul_WmrGNtOfYlPQ&usqp=CAU",
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "29",
                      name: "Express Train",
@@ -772,7 +696,7 @@ const SearchScreen = () => {
 
                   },
                ],
-               Trains: [
+               trains: [
                   {
                      id: "33",
                      name: "Express Train",
@@ -801,7 +725,25 @@ const SearchScreen = () => {
 
       },
 
-   ]
+   ];
+
+ const [items, setItems] =useState([]);
+
+  useEffect(() => {
+   if(items.length > 0) return;
+
+   const fetchProducts = async () => {
+      const colRef = collection (db, "places");
+
+      const docsSnap = await getDocs(colRef);
+        docsSnap.forEach((doc) => {
+         items.push(doc.data());
+        })
+      }
+      fetchProducts();
+   }, [items]);
+   console.log(items);
+
    return (
       <SafeAreaView>
          <View
@@ -824,7 +766,7 @@ const SearchScreen = () => {
             />
             <Feather name="search" size={24} color="black" />
          </View>
-         <SearchResults data={data} input={input} setInput={setInput} />
+         <SearchResults data={items} input={input} setInput={setInput} />
       </SafeAreaView>
    );
 };
